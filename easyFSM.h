@@ -16,15 +16,17 @@ class easyFSM
 public:
     // constructor
     // easyFSM(){}
-    easyFSM(S defState):_curState(defState){}
+    easyFSM(S StartState):_curState(StartState){}
     // deconstructor
     ~easyFSM(){}
+    // output the current state
     S CurState(){return _curState;}
     // bind
     void bind(S curState, S nextState, E event, void (*action)())
     {
         _itemList.push_back(*new item(curState, nextState, event, action));
     }
+    // send a event to FSM to change the current state
     void handleEvent(E event)
     {
         ACTION_PTR *action = nullptr;
@@ -48,7 +50,8 @@ public:
     }
 private:
     typedef void ACTION_PTR(void);
-    // item class
+    // To set up the state transfer table,
+    // I use the item to keep neccessary information.
     class item
     {
     public:
@@ -64,9 +67,8 @@ private:
 private:
     // private atribution
     typedef std::vector<item> VECITEM;
-    S _curState;
-    VECITEM _itemList;
-    
+    S _curState;        // the current state of FSM
+    VECITEM _itemList;  // to make up all states    
 };
 
 #endif /* easyFSM_h */
