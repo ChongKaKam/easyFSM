@@ -34,7 +34,7 @@ Then you can use `State` and `Event` to create the `easyFSM` , and remember to i
 easyFSM<State, Event> FSM(State1)
 ```
 
-So far, you have instantiate a `easyFSM`, then we are going to bind actions with FSM. In easyFSM, you need to define your action functions by yourself. After you defined action functions, you can use `bind()` to bind your function with states and events.
+So far, you have instantiated a `easyFSM`, then we are going to bind actions with FSM. In easyFSM, you need to define your action functions by yourself. After you defined action functions, you can use `bind()` to bind your function with states and events.
 
 ```c++
 // declaration
@@ -47,7 +47,7 @@ enum Event{...};
 FSM.bind(curState, nextState, event, action);
 ```
 
-After you bound state, event and function,  you can use `handleEBent()` to send events to change the state of FSM.
+After you bound states, events and functions,  you can use `handleEBent()` to send events to change the state of FSM.
 
 ```c++
 FSM.handleEvent(event);
